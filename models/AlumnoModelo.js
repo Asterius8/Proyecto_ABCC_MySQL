@@ -15,7 +15,7 @@ let Alumno = function (alumno) {
 //==================================== Logica para la BD Relacional ====================================
 //++++++++ ALTAS ++++++++
 Alumno.create = function (alumno, result) {
-    conexion.query("INSERT INTO b2m5ungj4bgtqipvlwf6 SET ?", alumno, function (err, res) {
+    conexion.query("INSERT INTO Alumnos SET ?", alumno, function (err, res) {
         if (err) {
             console.log("Error: ", err);
             result(err, null);
@@ -29,7 +29,7 @@ Alumno.create = function (alumno, result) {
 
 //++++++++ BAJAS ++++++++
 Alumno.delete = function (nc, result) {
-    conexion.query("DELETE FROM b2m5ungj4bgtqipvlwf6 WHERE NumControl = ?", [nc], function (err, res) {
+    conexion.query("DELETE FROM Alumnos WHERE NumControl = ?", [nc], function (err, res) {
         if (err) {
             console.log("Error: ", err);
             result(err, null);
@@ -42,7 +42,7 @@ Alumno.delete = function (nc, result) {
 
 //++++++++ CAMBIOS ++++++++
 Alumno.update = function (id, alumno, result) {
-    conexion.query("UPDATE b2m5ungj4bgtqipvlwf6 SET Nombre=?, PrimerAp=?, SegundoAp=?, FechaNac=?, Semestre=?, Carrera=? WHERE NumControl=?", [alumno.Nombre, alumno.PrimerAp, alumno.SegundoAp, alumno.FechaNac, alumno.Semestre, alumno.Carrera, id], function (err, res) {
+    conexion.query("UPDATE Alumnos SET Nombre=?, PrimerAp=?, SegundoAp=?, FechaNac=?, Semestre=?, Carrera=? WHERE NumControl=?", [alumno.Nombre, alumno.PrimerAp, alumno.SegundoAp, alumno.FechaNac, alumno.Semestre, alumno.Carrera, id], function (err, res) {
         if (err) {
             console.log("Error: ", err);
             result(err, null);
@@ -55,7 +55,7 @@ Alumno.update = function (id, alumno, result) {
 
 //++++++++ CONSULTAS ++++++++
 Alumno.findById = function (nc, result) {
-    conexion.query("SELECT * FROM b2m5ungj4bgtqipvlwf6 WHERE NumControl=?", [nc], function (err, res) {
+    conexion.query("SELECT * FROM Alumnos WHERE NumControl=?", [nc], function (err, res) {
         if (err) {
             console.log("Error: ", err);
             result(err, null);
@@ -67,7 +67,7 @@ Alumno.findById = function (nc, result) {
 }
 
 Alumno.findAll = function (result) {
-    conexion.query("SELECT * FROM b2m5ungj4bgtqipvlwf6", function (err, res) {
+    conexion.query("SELECT * FROM Alumnos", function (err, res) {
         if (err) {
             console.log("Error: ", err);
             result(err, null);

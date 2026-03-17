@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas Escolares</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="container mt-4">
+
+    <h2 class="mb-4">Lista de Alumno</h2>
+
+    <div class="mb-3">
+        <a href="/alta_alumno" class="btn btn-success">Agregar</a>
+    </div>
+
+    <div id="tabla_alumnos">
+        <!-- Cargar los registros de los alumnos de forma dinamica -->
+    </div>
+
+    <footer>
+
+    </footer>
+
+    <script>//para cargar los datos
+        fetch("/alumnos").then(response => {
+            if (response.ok)
+                return response.json();
+        }).then(data => {
+
+            let result = `<table class="table table-light table-striped table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Numero de Control</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
+                            <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+            data.forEach((a) => {
+                result += `<tr>
+                            <td>${a.NumControl}</td>
+                            <td>${a.Nombre}</td>
+                            <td>${a.PrimerAp}</td>
+                            <td>${a.SegundoAp}</td>
+
+                            <td> 
+                                <form action="alumnos/eliminar/${a.NumControl}" method="POST" onsubmit="return confirmarEliminacion()">
+                                    <a href="/consulta?id=${a.NumControl}" class="btn btn-primary btn-sm"> Detalle </a>
+                                    <a href="/editar?id=${a.NumControl}" class="btn btn-warning btn-sm"> Editar </a>
+
+                                    <button type="submit" class="btn btn-danger btn-sm"> Eliminar </button>
+                               </form>
+                            </td>
+                            </tr>`;
+            });
+
+            result += `</tbody> </table>`;
+            document.getElementById("tabla_alumnos").innerHTML = result;
+        }).catch(err => console.log("Error en la carga de datos"));
+
+        function confirmarEliminacion() {
+            /*if(confirm("Estas seguro de ELIMINAR este alumno"))
+                return true;
+            else  
+                return false;
+            */
+            return (confirm("Estas seguro de ELIMINAR este alumno")) ? true : false;// if ternario :v
+        }
+    </script>
+
+</body>
+
+</html>

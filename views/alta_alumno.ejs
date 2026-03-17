@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Alumno</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="container mt-4">
+
+    <h2 class="mb-4">Registro de Alumno</h2>
+
+    <form action="/alumnos" method="POST">
+        <div class="mb-3">
+            <label for="num_control" class="form-label">Numero de control</label>
+            <input type="text" class="form-control" id="num_control" name="num_control">
+        </div>
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
+        </div>
+
+        <div class="mb-3">
+            <label for="primer_ap" class="form-label">Primer Apellido</label>
+            <input type="text" class="form-control" id="primer_ap" name="primer_ap">
+        </div>
+
+        <div class="mb-3">
+            <label for="segundo_ap" class="form-label">Segundo Apellido</label>
+            <input type="text" class="form-control" id="segundo_ap" name="segundo_ap">
+        </div>
+
+        <div class="mb-3">
+            <label for="fecha_nac" class="form-label">Fecha de Nacimiento</label>
+            <input type="text" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="AAAA/MM/DD">
+        </div>
+
+        <div class="mb-3">
+            <label for="semestre" class="form-label">Semestre</label>
+            <select class="form-select" id="semestre" name="semestre">
+                <option value="">-- Selecciona semestre --</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="carrera" class="form-label">Carrera</label>
+            <select class="form-select" id="carrera" name="carrera">
+                <option value="">-- Selecciona carrera --</option>
+                <option value="ISC">ISC</option>
+                <option value="IM">IM</option>
+                <option value="IIA">IIA</option>
+                <option value="LA">LA</option>
+                <option value="CP">CP</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+</body>
+
+</html>
